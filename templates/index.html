@@ -101,13 +101,11 @@
     </div>
 
     <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
-
-      <div class="carousel-item active" style="background-image: url(assets/img/A4.png)">
-      </div>
-      <div class="carousel-item" style="background-image: url(assets/img/hero-carousel/hero-carousel-2.jpg)"></div>
+      <div class="carousel-item active" style="background-image: url(assets/img/A4.png)"></div>
+      <!-- <div class="carousel-item" style="background-image: url(assets/img/hero-carousel/hero-carousel-2.jpg)"></div>
       <div class="carousel-item" style="background-image: url(assets/img/hero-carousel/hero-carousel-3.jpg)"></div>
       <div class="carousel-item" style="background-image: url(assets/img/hero-carousel/hero-carousel-4.jpg)"></div>
-      <div class="carousel-item" style="background-image: url(assets/img/hero-carousel/hero-carousel-5.jpg)"></div>
+      <div class="carousel-item" style="background-image: url(assets/img/hero-carousel/hero-carousel-5.jpg)"></div> -->
 
       <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
         <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
@@ -308,7 +306,7 @@
             </div>
           </div>
         </div>
-        <div class="row" data-aos="fade-right" data-aos-delay="800">
+        <div class="row" data-aos="fade-right" data-aos-delay="400">
           <div class="col-md-6">
             <div class="card user-card">
               <div class="card-header">
@@ -418,12 +416,37 @@
     </section>
 
     <!-- ======= Comment Section ======= -->
+    <script>
+      function Comment() {
+        const writer = document.getElementById('writer').value;
+        const title = document.getElementById('title').value;
+        const star = document.querySelector('input[name="staradio"]:checked').value;
+        const comment = document.getElementById('usercomment').value;
+
+        const formData = new FormData();
+        formData.append("writer", writer);
+        formData.append("title", title);
+        formData.append("star", star);
+        formData.append("comment", comment);
+
+        console.log(formData)
+        fetch('http://127.0.0.1:5000/comment', { method: "POST", body: formData, })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data)
+            window.location.reload()
+          })
+          .catch((error)=> console.log(error));
+      }
+    </script>
+      <!-- Comment POST 함수입니다. 아래 form에서 받아온 값들을 POST하고 백엔드(/comment)에서는 이를 DB에 저장하는 과정을 수행합니다. -->
+
     <section id="comment" class="comment section-bg">
       <div class="container" data-aos="fade-up">
 
         <div class="section-header" id="a4comment">
           <h2>응원 메시지 남기기</h2>
-          <form onsubmit="Comment()">
+          <form>
             <div class="form-group row">
               <div class="col">
                 <input type="text" class="form-control" id="writer" placeholder="Enter name" required>
@@ -434,57 +457,60 @@
             </div>
             <div class="form-row">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" name="staradio" type="radio" id="inlineRadio1" value="1" required>
+                <input class="form-check-input" name="staradio" type="radio" id="inlineRadio1" value=1 required>
                 <label class="form-check-label" for="inlineRadio1">⭐</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" name="staradio" type="radio" id="inlineRadio2" value="2">
+                <input class="form-check-input" name="staradio" type="radio" id="inlineRadio2" value=2>
                 <label class="form-check-label" for="inlineRadio2">⭐⭐</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" name="staradio" type="radio" id="inlineRadio3" value="3">
+                <input class="form-check-input" name="staradio" type="radio" id="inlineRadio3" value=3>
                 <label class="form-check-label" for="inlineRadio3">⭐⭐⭐</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" name="staradio" type="radio" id="inlineRadio4" value="4">
+                <input class="form-check-input" name="staradio" type="radio" id="inlineRadio4" value=4>
                 <label class="form-check-label" for="inlineRadio4">⭐⭐⭐⭐</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" name="staradio" type="radio" id="inlineRadio5" value="5">
+                <input class="form-check-input" name="staradio" type="radio" id="inlineRadio5" value=5>
                 <label class="form-check-label" for="inlineRadio5">⭐⭐⭐⭐⭐</label>
               </div>
             </div>
             <div class="form-row">
-              <textarea class="form-control" id="comment" rows="3" required></textarea>
+              <textarea class="form-control" id="usercomment" rows="3" required></textarea>
               <small id="commenthelp" class="form-text text-muted">위로와 칭찬은 서로에게 더 좋은 영감을 줍니다.</small>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <input type="submit" class="btn btn-primary">
         </div>
         </form>
       </div>
-      <!-- Comment POST 함수입니다. form에서 받아온 값들을 POST하고 백엔드(/comment)에서는 이를 DB에 저장하는 과정을 수행합니다. -->
-      <script>
-        function Comment() {
-          const writer = document.getElementById('writer').value;
-          const title = document.getElementById('title').value;
-          const star = document.querySelector('input[name="staradio"]:checked').value;
-          const comment = document.getElementById('comment').value;
-
-          const formData = new FormData();
-          formData.append("writer", writer)
-          formData.append("title", title)
-          formData.append("star", star)
-          formData.append("comment", comment)
-
-          fetch('/comment', { method: "POST", body: formData, })
-            .then((res) => res.json())
-            .then((data) => console.log(data))
-            .then(window.location.reload())
-        }
-      </script>
+     
+      <!-- DB에서 모든 댓글 정보들을 가져와 예시 형태로 바꿔줍니다.  -->
 
       <div class="slides-2 swiper">
         <div class="swiper-wrapper">
+          {% for comment in comments %}
+          <div class="swiper-slide">
+            <div class="testimonial-wrap">
+              <div class="testimonial-item">
+                <h3>{{comment.name}}</h3>
+                <h4>{{comment.title}}</h4>
+                <div class="stars">
+                  {% for i in range(comment.star) %}
+                  <i class="bi bi-star-fill"></i>
+                  {% endfor %}
+                </div>
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  {{comment.comment}}
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+              </div>
+            </div>
+          </div>          
+          {% endfor%}
+
           <!-- 여기서 부터 -->
           <div class="swiper-slide">
             <div class="testimonial-wrap">
@@ -509,24 +535,23 @@
           <div class="swiper-slide">
             <div class="testimonial-wrap">
               <div class="testimonial-item">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
+                <h3>NAME</h3>
+                <h4>TITLE</h4>
                 <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
                 </div>
                 <p>
                   <i class="bi bi-quote quote-icon-left"></i>
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium
-                  quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                  COMMENT
                   <i class="bi bi-quote quote-icon-right"></i>
                 </p>
               </div>
             </div>
           </div><!-- End testimonial item -->
 
+
         </div>
-        <div class="swiper-pagination"></div>
+        <div class="swiper-pagination mt-5"></div>
       </div>
 
       </div>
