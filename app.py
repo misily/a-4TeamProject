@@ -1,13 +1,15 @@
-from flask import Flask
+from flask import Flask,render_template,request
+from pymongo import MongoClient
 app = Flask(__name__)
 
-from pymongo import MongoClient
-client = MongoClient('mongodb+srv://kimes:1234abcd@cluster0.d5w5umq.mongodb.net/?retryWrites=true&w=majority')
-db = client.dbsparta
 
-@app.route('/')
-def home():
-   return 'This is Home!'
+@app.route('/details/<usernum>',method=["GET"])
+def detail(usernum):
+    pass
 
-if __name__ == '__main__':  
-   app.run('0.0.0.0',port=5000,debug=True)
+@app.route('/comment',method=["POST","GET"])
+def comment():
+    if request.method == "POST":
+        pass
+    elif request.method == "GET":
+        pass
