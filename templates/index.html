@@ -416,69 +416,45 @@
     </section>
 
     <!-- ======= Comment Section ======= -->
-    <script>
-      function Comment() {
-        const writer = document.getElementById('writer').value;
-        const title = document.getElementById('title').value;
-        const star = document.querySelector('input[name="staradio"]:checked').value;
-        const comment = document.getElementById('usercomment').value;
-
-        const formData = new FormData();
-        formData.append("writer", writer);
-        formData.append("title", title);
-        formData.append("star", star);
-        formData.append("comment", comment);
-
-        console.log(formData)
-        fetch('http://127.0.0.1:5000/comment', { method: "POST", body: formData, })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data)
-            window.location.reload()
-          })
-          .catch((error)=> console.log(error));
-      }
-    </script>
       <!-- Comment POST 함수입니다. 아래 form에서 받아온 값들을 POST하고 백엔드(/comment)에서는 이를 DB에 저장하는 과정을 수행합니다. -->
 
     <section id="comment" class="comment section-bg">
       <div class="container" data-aos="fade-up">
-
         <div class="section-header" id="a4comment">
           <h2>응원 메시지 남기기</h2>
-          <form>
+          <form method="POST" action="/comment">
             <div class="form-group row">
               <div class="col">
-                <input type="text" class="form-control" id="writer" placeholder="Enter name" required>
+                <input type="text" class="form-control" name="writer" id="writer" placeholder="Enter name" required>
               </div>
               <div class="col">
-                <input type="text" class="form-control" id="title" placeholder="Enter title" required>
+                <input type="text" class="form-control" name="title" id="title" placeholder="Enter title" required>
               </div>
             </div>
             <div class="form-row">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" name="staradio" type="radio" id="inlineRadio1" value=1 required>
+                <input class="form-check-input" name="star" type="radio" id="inlineRadio1" value=1 required>
                 <label class="form-check-label" for="inlineRadio1">⭐</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" name="staradio" type="radio" id="inlineRadio2" value=2>
+                <input class="form-check-input" name="star" type="radio" id="inlineRadio2" value=2>
                 <label class="form-check-label" for="inlineRadio2">⭐⭐</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" name="staradio" type="radio" id="inlineRadio3" value=3>
+                <input class="form-check-input" name="star" type="radio" id="inlineRadio3" value=3>
                 <label class="form-check-label" for="inlineRadio3">⭐⭐⭐</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" name="staradio" type="radio" id="inlineRadio4" value=4>
+                <input class="form-check-input" name="star" type="radio" id="inlineRadio4" value=4>
                 <label class="form-check-label" for="inlineRadio4">⭐⭐⭐⭐</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" name="staradio" type="radio" id="inlineRadio5" value=5>
+                <input class="form-check-input" name="star" type="radio" id="inlineRadio5" value=5>
                 <label class="form-check-label" for="inlineRadio5">⭐⭐⭐⭐⭐</label>
               </div>
             </div>
             <div class="form-row">
-              <textarea class="form-control" id="usercomment" rows="3" required></textarea>
+              <textarea class="form-control" name="comment" id="comment" rows="3" required></textarea>
               <small id="commenthelp" class="form-text text-muted">위로와 칭찬은 서로에게 더 좋은 영감을 줍니다.</small>
             </div>
             <input type="submit" class="btn btn-primary">
@@ -510,9 +486,8 @@
             </div>
           </div>          
           {% endfor%}
-
           <!-- 여기서 부터 -->
-          <div class="swiper-slide">
+          <!-- <div class="swiper-slide">
             <div class="testimonial-wrap">
               <div class="testimonial-item">
                 <h3>Saul Goodman</h3>
@@ -529,27 +504,8 @@
                 </p>
               </div>
             </div>
-          </div>
+          </div> -->
           <!-- 여기까지가 하나의 댓글 디스플레이 입니다. 백엔드에서 GET을 통해 DB에 있는 댓글들을 해당 형태로 리턴하여 출력하도록 할 생각입니다. -->
-
-          <div class="swiper-slide">
-            <div class="testimonial-wrap">
-              <div class="testimonial-item">
-                <h3>NAME</h3>
-                <h4>TITLE</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  COMMENT
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div>
-          </div><!-- End testimonial item -->
-
-
         </div>
         <div class="swiper-pagination mt-5"></div>
       </div>

@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request,jsonify
+from flask import Flask,render_template,request,jsonify,redirect,url_for
 from pymongo import MongoClient
 from flask_cors import CORS
 
@@ -30,7 +30,7 @@ def comment():
         }
         userComment.insert_one(doc)
         print(doc)
-        return jsonify({"message": "Comment added successfully."})
+        return redirect(url_for('index'))
       
 if __name__ == '__main__':
     app.run(debug=True)
