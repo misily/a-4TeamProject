@@ -13,7 +13,9 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
-    <title>Document</title>
+    <title>
+        Document
+    </title>
 
     <style>
         body {
@@ -21,7 +23,7 @@
         }
 
         .card-style1 {
-            box-shadow: 0px 0px 10px 0px rgb(89 75 128 / 9%);
+            box-shadow: 5px 10px 10px 10px rgb(89 75 128 / 60%);
         }
 
         .border-0 {
@@ -32,8 +34,9 @@
             position: relative;
             display: flex;
             flex-direction: column;
-            min-width: 0;
+            width: fit-content;
             word-wrap: break-word;
+            background-size: cover;
             background-color: #fff;
             background-clip: border-box;
             border: 1px solid rgba(0, 0, 0, .125);
@@ -52,6 +55,7 @@
         }
 
         .section-title {
+            padding: 50px 0;
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -161,6 +165,19 @@
         .btn_box>button {
             margin: 3px
         }
+
+        .p-1-9 {
+            padding: 3.1rem;
+        }
+
+        .section-title {
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
     </style>
 </head>
 
@@ -169,50 +186,57 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 mb-4 mb-sm-5">
-                    <div class="card card-style1 border-0">
+                    <div class="card card-style1 border-0" style="float: left;">
                         <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
                             <div class="row align-items-center">
                                 <div class="col-lg-6 mb-4 mb-lg-0">
                                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="...">
                                 </div>
-                                <div class="col-lg-6 px-xl-10">
-                                    <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
-                                        <h3 class="h2 text-white mb-0">여기에 이름이 들어갑니다.</h3>
-                                        <span class="text-primary">팀원 or 팀장</span>
-                                    </div>
-                                    <ul class="list-unstyled mb-1-9">
-                                        <li class="mb-2 mb-xl-3 display-28"><span
-                                                class="display-26 text-secondary me-2 font-weight-600">MBTI</span>
-                                            mbti</li>
-                                        <li class="mb-2 mb-xl-3 display-28"><span
-                                                class="display-26 text-secondary me-2 font-weight-600">취미:</span>
-                                            취미</li>
-                                        <li class="mb-2 mb-xl-3 display-28"><span
-                                                class="display-26 text-secondary me-2 font-weight-600">관심사:</span>
-                                            관심사</li>
-                                        <li class="mb-2 mb-xl-3 display-28"><span
-                                                class="display-26 text-secondary me-2 font-weight-600">Email:</span>
-                                            www.example.com</li>
-                                        <li class="display-28"><span
-                                                class="display-26 text-secondary me-2 font-weight-600">한마디:</span>
-                                            오늘도 화이팅!</li>
-                                    </ul>
-                                    <ul class="social-icon-style1 list-unstyled mb-0 ps-0">
-                                        <li><a href="#!"><i class="ti-twitter-alt"></i></a></li>
-                                        <li><a href="#!"><i class="ti-facebook"></i></a></li>
-                                        <li><a href="#!"><i class="ti-pinterest"></i></a></li>
-                                        <li><a href="#!"><i class="ti-instagram"></i></a></li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                     </div>
+                    <aside>
+                        <div class="row align-items-center" style="float: right;">
+                            <div class="col-lg-6 px-xl-10">
+                                <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
+                                    <h3 class="h2 text-white mb-0">Title</h3>
+                                    <span class="text-primary">tag</span>
+                                </div>
+                                <ul class="list-unstyled mb-1-9">
+                                    <li class="mb-2 mb-xl-3 display-28"><span
+                                            class="display-26 text-secondary me-2 font-weight-600">성함:</span>
+                                        ㅇㅇㅇ
+                                    </li>
+                                    <li class="mb-2 mb-xl-3 display-28"><span
+                                            class="display-26 text-secondary me-2 font-weight-600">MBTI:</span> 10
+                                        Years</li>
+                                    <li class="mb-2 mb-xl-3 display-28"><span
+                                            class="display-26 text-secondary me-2 font-weight-600">Email:</span>
+                                        edith@mail.com</li>
+                                    <li class="mb-2 mb-xl-3 display-28"><span
+                                            class="display-26 text-secondary me-2 font-weight-600">개인프로젝트
+                                            링크:</span>
+                                        http://myweb.eba-zhpec4pz..elasticbeanstalk.com/</li>
+                                    <li class="display-28"><span
+                                            class="display-26 text-secondary me-2 font-weight-600">관심사:</span>
+                                        관심사
+                                    </li>
+                                </ul>
+                                <ul class="social-icon-style1 list-unstyled mb-0 ps-0">
+                                    <li><a href="#!"><i class="ti-twitter-alt"></i></a></li>
+                                    <li><a href="#!"><i class="ti-facebook"></i></a></li>
+                                    <li><a href="#!"><i class="ti-pinterest"></i></a></li>
+                                    <li><a href="#!"><i class="ti-instagram"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </aside>
                 </div>
                 <div class="col-lg-12 mb-4 mb-sm-5">
                     <div>
                         <span class="section-title text-primary mb-3 mb-sm-4">About Me</span>
                         <p>나는 누구인가, 자기소개.</p>
-
                     </div>
                 </div>
                 <div class="col-lg-12">
@@ -269,6 +293,7 @@
                                 <span class="section-title text-primary mb-3 mb-sm-4">앞으로의 다짐</span>
                                 <p>앞으로 열심히 하겠다 열정을 가지고 이 한몸 바쳐서 공동체의 발전에 기여할 수 있도록....대충 이런 내용의 다짐 </p>
                             </div>
+
                             <div class="btn_box">
                                 <button type="button" class="btn btn-dark">
                                     수정
