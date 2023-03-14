@@ -5,9 +5,6 @@ from pymongo import MongoClient
 client = MongoClient('mongodb+srv://kimes:1234abcd@cluster0.d5w5umq.mongodb.net/?retryWrites=true&w=majority')
 db = client.dbsparta
 
-import requests
-from bs4 import BeautifulSoup
-
 @app.route('/')
 def home():
    return render_template('detail.html')
