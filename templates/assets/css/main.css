@@ -369,7 +369,7 @@ section {
 }
 
 .scroll-top:hover {
-  background: #0022fe;
+  background: #ffffff;
   color: #fff;
 }
 
@@ -2747,7 +2747,7 @@ section {
 
 .footer:before {
   content: "";
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(4, 19, 112, 0.96);
   position: absolute;
   inset: 0;
 }
