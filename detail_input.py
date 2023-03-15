@@ -39,28 +39,5 @@ def write_post():
     db.user_info.insert_one(doc)
     return jsonify({'msg': '저장되었습니다~!'})
 
-# app.route("/write_post", methods=["POST"])
-# def userinfo_give():
-#     user_name_receive = request.form['user_name_give']
-#     title_receive = request.form['title_give']
-#     tags_receive = request.form['tags_give']
-#     contents_receive = request.form['contents_give']
-#     comments_receive = request.form['comments_give']
-#     photo_url_receive = request.form['photo_url_give']
-#     url_receive = request.form['url_give']
-
-#     doc = {
-#         'user_name':user_name_receive,
-#         'title':title_receive,
-#         'tags':tags_receive,
-#         'contents':contents_receive,
-#         'comments':comments_receive,
-#         'photo_url':photo_url_receive,
-#         'photo_url':url_receive
-#     }
-
-#     db.teamproject1.insert_one(doc)
-#     return jsonify({'msg': '저장 완료!'})
-
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
