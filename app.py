@@ -12,6 +12,16 @@ def home():
     comments = list(userComment.find({},{'_id':False}))
     return render_template('index.html',comments=comments)
 
+# 프로필 상세페이지 연결
+@app.route('/profile')
+def profile():
+   return render_template('profile_detail.html') 
+
+@app.route('/profile/input')
+def input():
+   return render_template('profile_detail_input.html') 
+# 수정버튼 누르면 404에러 발생
+
 @app.route('/details/<usernum>',methods=["GET"])
 def detail(usernum):
     pass
@@ -32,33 +42,11 @@ def comment():
     
 # 디테일 페이지 코드
 
-@app.route("/detail_post", methods=["POST"])
-def guestbook_post():
-    user_name_receive = request.form['user_name_give']
-    title_receive = request.form['title_give']
-    tags_receive = request.form['tags_give']
-    contents_receive = request.form['contents_give']
-    comments_receive = request.form['comments_give']
-    photo_url_receive = request.form['photo_url_give']
-    url_receive = request.form['url_give']
-
-    doc = {
-        'user_name':user_name_receive,
-        'title':title_receive,
-        'tags':tags_receive,
-        'contents':contents_receive,
-        'comments':comments_receive,
-        'photo_url':photo_url_receive,
-        'photo_url':url_receive
-    }
-
-    db.teamproject1.insert_one(doc)
-    return jsonify({'msg': '저장 완료!'})
-
+# photo_url/title/name/MBTI/email/personallink/interest
 @app.route("/detail_get", methods=["GET"])
 def guestbook_get():
-    all_recommend = list(db.teamproject1.find({},{'_id':False}))
-    return jsonify({'result':all_recommend})
+    all_info = list(db.user_info.find({},{'_id':False}))
+    return jsonify({'result':all_info})
 
 # 디테일 수정페이지 코드
 
