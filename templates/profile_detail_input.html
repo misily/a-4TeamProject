@@ -31,111 +31,147 @@
             border: 2px black;
         }
     </style>
+    <script>
+        function save_info() {
+            let name = $('#input_name').val()
+            let mbti = $('#mbti').val()
+            let email = $('#email').val()
+            let photo_url = $('#photo_url').val()
+            let interest = $('#interest').val()
+            let aboutme = $('#aboutme').val()
+            let javascript = $('#javascript').val()
+            let CSS = $('#CSS').val()
+            let HTML = $('#HTML').val()
+            let Python = $('#Python').val()
+            let Promise = $('#Promise').val()
+
+            console.log(name)
+            let formData = new FormData();
+
+            formData.append("user_name_give", name);
+            formData.append("mbti_give", mbti);
+            formData.append("email_give", email);
+            formData.append("photo_url_give", photo_url);
+            formData.append("interest_give", interest);
+            formData.append("aboutme_give", aboutme);
+            formData.append("javascript_give", javascript);
+            formData.append("CSS_give", CSS);
+            formData.append("HTML_give", HTML);
+            formData.append("Python_give", Python);
+            formData.append("Promise_give", Promise);
+
+            fetch('/write_post', { method: "POST", body: formData }).then((res) => res.json()).then((data) => {
+                console.log(data)
+                alert(data["msg"])
+                window.location.reload()
+            });
+        }
+    </script>
 </head>
 
 <body>
     <div class="tle">
         <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">이름</span>
-            <input type="text" class="form-control" aria-label="Sizing example input"
+            <input id="input_name" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default">
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">MBTI</span>
-            <input type="text" class="form-control" aria-label="Sizing example input"
+            <input id="mbti" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default">
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
-            <input type="text" class="form-control" aria-label="Sizing example input"
+            <input id="email" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default">
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">프로필이미지 url</span>
-            <input type="text" class="form-control" aria-label="Sizing example input"
+            <input id="photo_url" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default">
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">관심사</span>
-            <input type="text" class="form-control" aria-label="Sizing example input"
+            <input id="interest" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default">
         </div>
         <div class="input-group mb-3 aboutme">
             <span class="input-group-text" id="inputGroup-sizing-default">about me</span>
-            <input type="text" class="form-control" aria-label="Sizing example input"
+            <input id="aboutme" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default">
         </div>
         <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">JavaScript</label>
-            <select class="form-select" id="inputGroupSelect01">
+            <select class="form-select" id="javascript">
                 <option selected>--</option>
-                <option value="1">10%</option>
-                <option value="2">20%</option>
-                <option value="3">30%</option>
-                <option value="1">40%</option>
-                <option value="1">50%</option>
-                <option value="1">60%</option>
-                <option value="1">70%</option>
-                <option value="1">80%</option>
-                <option value="1">90%</option>
-                <option value="1">100%</option>
+                <option value="10">10%</option>
+                <option value="20">20%</option>
+                <option value="30">30%</option>
+                <option value="40">40%</option>
+                <option value="50">50%</option>
+                <option value="60">60%</option>
+                <option value="70">70%</option>
+                <option value="80">80%</option>
+                <option value="90">90%</option>
+                <option value="100">100%</option>
             </select>
         </div>
         <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">HTML</label>
-            <select class="form-select" id="inputGroupSelect01">
+            <select class="form-select" id="HTML">
                 <option selected>--</option>
-                <option value="1">10%</option>
-                <option value="2">20%</option>
-                <option value="3">30%</option>
-                <option value="1">40%</option>
-                <option value="1">50%</option>
-                <option value="1">60%</option>
-                <option value="1">70%</option>
-                <option value="1">80%</option>
-                <option value="1">90%</option>
-                <option value="1">100%</option>
+                <option value="10">10%</option>
+                <option value="20">20%</option>
+                <option value="30">30%</option>
+                <option value="40">40%</option>
+                <option value="50">50%</option>
+                <option value="60">60%</option>
+                <option value="70">70%</option>
+                <option value="80">80%</option>
+                <option value="90">90%</option>
+                <option value="10">100%</option>
             </select>
         </div>
         <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">CSS</label>
-            <select class="form-select" id="inputGroupSelect01">
+            <select class="form-select" id="CSS">
                 <option selected>--</option>
-                <option value="1">10%</option>
-                <option value="2">20%</option>
-                <option value="3">30%</option>
-                <option value="1">40%</option>
-                <option value="1">50%</option>
-                <option value="1">60%</option>
-                <option value="1">70%</option>
-                <option value="1">80%</option>
-                <option value="1">90%</option>
-                <option value="1">100%</option>
+                <option value="10">10%</option>
+                <option value="20">20%</option>
+                <option value="30">30%</option>
+                <option value="40">40%</option>
+                <option value="50">50%</option>
+                <option value="60">60%</option>
+                <option value="70">70%</option>
+                <option value="80">80%</option>
+                <option value="90">90%</option>
+                <option value="100">100%</option>
             </select>
         </div>
         <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">Python</label>
-            <select class="form-select" id="inputGroupSelect01">
+            <select class="form-select" id="Python">
                 <option selected>--</option>
-                <option value="1">10%</option>
-                <option value="2">20%</option>
-                <option value="3">30%</option>
-                <option value="1">40%</option>
-                <option value="1">50%</option>
-                <option value="1">60%</option>
-                <option value="1">70%</option>
-                <option value="1">80%</option>
-                <option value="1">90%</option>
-                <option value="1">100%</option>
+                <option value="10">10%</option>
+                <option value="20">20%</option>
+                <option value="30">30%</option>
+                <option value="40">40%</option>
+                <option value="50">50%</option>
+                <option value="60">60%</option>
+                <option value="70">70%</option>
+                <option value="80">80%</option>
+                <option value="90">90%</option>
+                <option value="100">100%</option>
             </select>
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">앞으로의 다짐</span>
-            <input type="text" class="form-control" aria-label="Sizing example input"
+            <input id="Promise" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default">
         </div>
         <div>
-            <button type="button" class="btn-dark">저장</button>
+            <button onclick=save_info() type="button" class="btn-dark">저장</button>
             <button type="button" class="btn-dark">취소</button>
         </div>
     </div>
