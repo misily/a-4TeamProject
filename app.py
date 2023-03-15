@@ -1,9 +1,7 @@
 from flask import Flask,render_template,request,jsonify,redirect,url_for
 from pymongo import MongoClient
-from flask_cors import CORS
 
 app = Flask(__name__,static_folder="templates/assets")
-CORS(app)
 
 client = MongoClient('mongodb+srv://kimes:1234abcd@cluster0.d5w5umq.mongodb.net/?retryWrites=true&w=majority')
 db = client.dbsparta
@@ -30,7 +28,7 @@ def comment():
         }
         userComment.insert_one(doc)
         print(doc)
-        return redirect(url_for('index'))
+        return redirect(url_for('/'))
       
 if __name__ == '__main__':
     app.run(debug=True)
