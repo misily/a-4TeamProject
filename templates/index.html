@@ -101,21 +101,16 @@
     </div>
 
     <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
-      <div class="carousel-item active" style="background-image: url(assets/img/A4.png)"></div>
-      <!-- <div class="carousel-item" style="background-image: url(assets/img/hero-carousel/hero-carousel-2.jpg)"></div>
-      <div class="carousel-item" style="background-image: url(assets/img/hero-carousel/hero-carousel-3.jpg)"></div>
-      <div class="carousel-item" style="background-image: url(assets/img/hero-carousel/hero-carousel-4.jpg)"></div>
-      <div class="carousel-item" style="background-image: url(assets/img/hero-carousel/hero-carousel-5.jpg)"></div> -->
-
-      <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
-      </a>
-
-      <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
-        <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
-      </a>
-
-    </div>
+          <div class="carousel-item active" style="background-image: url(assets/img/A4.png)"></div>
+          <div class="carousel-item" style="background-image: url(assets/img/배경2.jpg)"></div>
+          <div class="carousel-item" style="background-image: url(assets/img/배경3.jpg)"></div>
+          <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+          </a>
+          <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
+              <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+          </a>
+      </div>
 
   </section>
   <!-- End Hero Section -->
@@ -125,22 +120,34 @@
     <!-- ======= Get Started Section ======= -->
     <section id="get-started" class="get-started section-bg">
       <div class="container">
+            <div class="row justify-content-between gy-4">
+                <div class="col-lg-12 d-flex align-items-center" data-aos="fade-up" data-aos-delay="500">
+                    <div class="content">
+                        <h3>프로젝트 개요</h3>
+                        <h5>▶ 주제</h5>
+                        <p>우리 팀을 소개할 수 있고 우리만의 이야기를 담을 수 있는 "팀 소개 웹페이지" 제작하다.</p>
 
-        <div class="row justify-content-between gy-4">
+                        <h5>▶ 이름</h5>
+                        <p>A4용지 : A-4조 "A4용지"조 되다.</p>
 
-          <div class="col-lg-12 d-flex align-items-center" data-aos="fade-up" data-aos-delay="500">
-            <div class="content">
-              <h3>프로젝트 개요</h3>
-              <p>Rem id rerum. Debitis deserunt quidem delectus expedita ducimus dolor. Aut iusto ipsa. Eos ipsum nobis
-                ipsa soluta itaque perspiciatis fuga ipsum perspiciatis. Eum amet fugiat totam nisi possimus ut delectus
-                dicta.
-              <p>Aliquam velit deserunt autem. Inventore et saepe. Tenetur suscipit eligendi labore culpa eos. Deserunt
-                porro magni qui necessitatibus dolorem at animi cupiditate.</p>
+                        <h5>▶ 목적</h5>
+                        <p>팀원을 소개하는 웹페이지를 만드는 프로젝트를 진행함으로써
+                            자신의 현재 실력을 점검하고 웹 개발 전반의 흐름을 이해하며 실력을 업그레이드하는 목적이 있다.</p>
+
+                        <h5>▶ 멤버</h5>
+                        <p>김성광, 김은수, 배현아, 유혜민, 이윤성</p>
+
+                        <h5>▶ 목록</h5>
+                        <p> - 홈 </p>
+                        <p> - 멤버 소개 </p>
+                        <p> - 응원 메시지 </p>
+
+                        <h5>▶ 제작 기간</h5>
+                        <p>2023.03.13~2023.03.17</p>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-
-      </div>
     </section>
     <!-- End Get Started Section -->
 
@@ -412,26 +419,26 @@
 
         </div>
       </div>
-    
+
     </section>
 
     <!-- ======= Comment Section ======= -->
-      <!-- Comment POST 함수입니다. 아래 form에서 받아온 값들을 POST하고 백엔드(/comment)에서는 이를 DB에 저장하는 과정을 수행합니다. -->
-
-    <section id="comment" class="comment section-bg">
+    <!-- Comment POST 함수입니다. 아래 form에서 받아온 값들을 POST하고 백엔드(/comment)에서는 이를 DB에 저장하는 과정을 수행합니다. -->
+    <section id="testimonials" class="testimonials section-bg">
       <div class="container" data-aos="fade-up">
         <div class="section-header" id="a4comment">
           <h2>응원 메시지 남기기</h2>
+          <p>응원의 메세지나 혹은 감상을 적어주세요.</p>
           <form method="POST" action="/comment">
-            <div class="form-group row">
+            <div class="form-group row mt-5">
               <div class="col">
-                <input type="text" class="form-control" name="writer" id="writer" placeholder="Enter name" required>
+                <input type="text" class="form-control" name="writer" id="writer" placeholder="이름 입력" required>
               </div>
               <div class="col">
-                <input type="text" class="form-control" name="title" id="title" placeholder="Enter title" required>
+                <input type="text" class="form-control" name="title" id="title" placeholder="직함 입력" required>
               </div>
             </div>
-            <div class="form-row">
+            <div class="form-row my-3">
               <div class="form-check form-check-inline">
                 <input class="form-check-input" name="star" type="radio" id="inlineRadio1" value=1 required>
                 <label class="form-check-label" for="inlineRadio1">⭐</label>
@@ -457,62 +464,59 @@
               <textarea class="form-control" name="comment" id="comment" rows="3" required></textarea>
               <small id="commenthelp" class="form-text text-muted">위로와 칭찬은 서로에게 더 좋은 영감을 줍니다.</small>
             </div>
-            <input type="submit" class="btn btn-primary">
+            <input type="submit" class="btn btn-primary mt-3" value="댓글 전송">
         </div>
         </form>
-      </div>
-     
+
       <!-- DB에서 모든 댓글 정보들을 가져와 예시 형태로 바꿔줍니다.  -->
-
-      <div class="slides-2 swiper">
-        <div class="swiper-wrapper">
-          {% for comment in comments %}
-          <div class="swiper-slide">
-            <div class="testimonial-wrap">
-              <div class="testimonial-item">
-                <h3>{{comment.name}}</h3>
-                <h4>{{comment.title}}</h4>
-                <div class="stars">
-                  {% for i in range(comment.star) %}
-                  <i class="bi bi-star-fill"></i>
-                  {% endfor %}
+          <div class="slides-2 swiper">
+            <div class="swiper-wrapper">
+              {% for comment in comments %}
+              <div class="swiper-slide">
+                <div class="testimonial-wrap">
+                  <div class="testimonial-item">
+                    <h3>{{comment.name}}</h3>
+                    <h4>{{comment.title}}</h4>
+                    <div class="stars">
+                      {% for i in range(comment.star) %}
+                      <i class="bi bi-star-fill"></i>
+                      {% endfor %}
+                    </div>
+                    <p>
+                      <i class="bi bi-quote quote-icon-left"></i>
+                      {{comment.comment}}
+                      <i class="bi bi-quote quote-icon-right"></i>
+                    </p>
+                  </div>
                 </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  {{comment.comment}}
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
               </div>
+              {% endfor %}
+              <!-- 여기서 부터 -->
+              <!-- <div class="swiper-slide">
+                  <div class="testimonial-wrap">
+                    <div class="testimonial-item">
+                      <h3>Saul Goodman</h3>
+                      <h4>Ceo &amp; Founder</h4>
+                      <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                          class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      </div>
+                      <p>
+                        <i class="bi bi-quote quote-icon-left"></i>
+                        Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium
+                        quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                        <i class="bi bi-quote quote-icon-right"></i>
+                      </p>
+                    </div>
+                  </div>
+                </div> -->
+              <!-- 여기까지가 하나의 댓글 디스플레이 입니다. 백엔드에서 GET을 통해 DB에 있는 댓글들을 해당 형태로 리턴하여 출력하도록 할 생각입니다. -->
             </div>
-          </div>          
-          {% endfor%}
-          <!-- 여기서 부터 -->
-          <!-- <div class="swiper-slide">
-            <div class="testimonial-wrap">
-              <div class="testimonial-item">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium
-                  quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div>
-          </div> -->
-          <!-- 여기까지가 하나의 댓글 디스플레이 입니다. 백엔드에서 GET을 통해 DB에 있는 댓글들을 해당 형태로 리턴하여 출력하도록 할 생각입니다. -->
+            <div class="swiper-pagination"></div>
+          </div>
         </div>
-        <div class="swiper-pagination mt-5"></div>
-      </div>
-
-      </div>
-    </section>
-    <!-- End comment Section -->
+      </section>
+      <!-- End comment Section -->
 
   </main>
 
@@ -533,7 +537,8 @@
                 <strong>팀원:</strong> 김성광 배현아 유혜민 이윤성<br>
               </p>
               <div class="social-links d-flex mt-3">
-                <a href="#" onclick="clip(); return false;" id="sns_urlcopy" class="d-flex align-items-center justify-content-center">url</a>
+                <a href="#" onclick="clip(); return false;" id="sns_urlcopy"
+                  class="d-flex align-items-center justify-content-center">url</a>
               </div>
             </div>
           </div><!-- End footer info column-->
