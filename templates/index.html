@@ -417,20 +417,21 @@
 
     <!-- ======= Comment Section ======= -->
     <!-- Comment POST 함수입니다. 아래 form에서 받아온 값들을 POST하고 백엔드(/comment)에서는 이를 DB에 저장하는 과정을 수행합니다. -->
-    <section id="comment" class="comment section-bg">
+    <section id="testimonials" class="testimonials section-bg">
       <div class="container" data-aos="fade-up">
         <div class="section-header" id="a4comment">
           <h2>응원 메시지 남기기</h2>
+          <p>응원의 메세지나 혹은 감상을 적어주세요.</p>
           <form method="POST" action="/comment">
-            <div class="form-group row">
+            <div class="form-group row mt-5">
               <div class="col">
-                <input type="text" class="form-control" name="writer" id="writer" placeholder="Enter name" required>
+                <input type="text" class="form-control" name="writer" id="writer" placeholder="이름 입력" required>
               </div>
               <div class="col">
-                <input type="text" class="form-control" name="title" id="title" placeholder="Enter title" required>
+                <input type="text" class="form-control" name="title" id="title" placeholder="직함 입력" required>
               </div>
             </div>
-            <div class="form-row">
+            <div class="form-row my-3">
               <div class="form-check form-check-inline">
                 <input class="form-check-input" name="star" type="radio" id="inlineRadio1" value=1 required>
                 <label class="form-check-label" for="inlineRadio1">⭐</label>
@@ -456,62 +457,59 @@
               <textarea class="form-control" name="comment" id="comment" rows="3" required></textarea>
               <small id="commenthelp" class="form-text text-muted">위로와 칭찬은 서로에게 더 좋은 영감을 줍니다.</small>
             </div>
-            <input type="submit" class="btn btn-primary">
+            <input type="submit" class="btn btn-primary mt-3" value="댓글 전송">
         </div>
         </form>
-      </div>
 
       <!-- DB에서 모든 댓글 정보들을 가져와 예시 형태로 바꿔줍니다.  -->
-
-      <div class="slides-2 swiper">
-        <div class="swiper-wrapper">
-          {% for comment in comments %}
-          <div class="swiper-slide">
-            <div class="testimonial-wrap">
-              <div class="testimonial-item">
-                <h3>{{comment.name}}</h3>
-                <h4>{{comment.title}}</h4>
-                <div class="stars">
-                  {% for i in range(comment.star) %}
-                  <i class="bi bi-star-fill"></i>
-                  {% endfor %}
+          <div class="slides-2 swiper">
+            <div class="swiper-wrapper">
+              {% for comment in comments %}
+              <div class="swiper-slide">
+                <div class="testimonial-wrap">
+                  <div class="testimonial-item">
+                    <h3>{{comment.name}}</h3>
+                    <h4>{{comment.title}}</h4>
+                    <div class="stars">
+                      {% for i in range(comment.star) %}
+                      <i class="bi bi-star-fill"></i>
+                      {% endfor %}
+                    </div>
+                    <p>
+                      <i class="bi bi-quote quote-icon-left"></i>
+                      {{comment.comment}}
+                      <i class="bi bi-quote quote-icon-right"></i>
+                    </p>
+                  </div>
                 </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  {{comment.comment}}
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
               </div>
+              {% endfor %}
+              <!-- 여기서 부터 -->
+              <!-- <div class="swiper-slide">
+                  <div class="testimonial-wrap">
+                    <div class="testimonial-item">
+                      <h3>Saul Goodman</h3>
+                      <h4>Ceo &amp; Founder</h4>
+                      <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                          class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      </div>
+                      <p>
+                        <i class="bi bi-quote quote-icon-left"></i>
+                        Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium
+                        quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                        <i class="bi bi-quote quote-icon-right"></i>
+                      </p>
+                    </div>
+                  </div>
+                </div> -->
+              <!-- 여기까지가 하나의 댓글 디스플레이 입니다. 백엔드에서 GET을 통해 DB에 있는 댓글들을 해당 형태로 리턴하여 출력하도록 할 생각입니다. -->
             </div>
+            <div class="swiper-pagination"></div>
           </div>
-          {% endfor %}
-          <!-- 여기서 부터 -->
-          <!-- <div class="swiper-slide">
-            <div class="testimonial-wrap">
-              <div class="testimonial-item">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium
-                  quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div>
-          </div> -->
-          <!-- 여기까지가 하나의 댓글 디스플레이 입니다. 백엔드에서 GET을 통해 DB에 있는 댓글들을 해당 형태로 리턴하여 출력하도록 할 생각입니다. -->
         </div>
-        <div class="swiper-pagination mt-5"></div>
-      </div>
-
-      </div>
-    </section>
-    <!-- End comment Section -->
+      </section>
+      <!-- End comment Section -->
 
   </main>
 
