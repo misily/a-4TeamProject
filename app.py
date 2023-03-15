@@ -28,7 +28,7 @@ def comment():
         }
         userComment.insert_one(doc)
         print(doc)
-        return redirect(url_for('/'))
+        return redirect(url_for('home'))
       
 if __name__ == '__main__':
     app.run(debug=True)
