@@ -15,7 +15,7 @@ def home():
 # 프로필 상세페이지 연결
 @app.route('/profile/<usernum>',methods=["GET"])
 def profile(usernum):
-    user = db.user_info.find_one({'usernum':usernum},{'_id':False})
+    user = db.user_info.find_one({'CSS':60},{'_id':False})
     print(user)
     modify = url_for('input',usernum=usernum)
     return render_template('user_profile.html',user=user,modify=modify)
@@ -23,7 +23,7 @@ def profile(usernum):
 @app.route('/profile/<usernum>/input',methods=["GET","POST"])
 def input(usernum):
     if request.method == "GET":
-        user = db.user_info.find_one({'usernum':usernum},{'_id':False})
+        user = db.user_info.find_one({'CSS':60},{'_id':False})
         return render_template('profile_detail_input.html',user=user) 
     elif request.method == "POST":
         form = request.form
