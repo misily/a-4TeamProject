@@ -23,42 +23,25 @@ def profile(usernum):
 @app.route('/profile/<usernum>/input',methods=["GET","POST"])
 def input(usernum):
     if request.method == "GET":
-        print(usernum)
         user = db.user_info.find_one({'usernum':int(usernum)},{'_id':False})
-        user_all = list(db.user_info.find({},{'_id':False}))
-        print(user,user_all)
         return render_template('profile_detail_input.html',user=user) 
     elif request.method == "POST":
         form = request.form
-        print(form)
-        mbti_receive = request.form['mbti_give']
-        email_receive = request.form['email_give']
-        photo_url_receive = request.form['photo_url_give']
-        blog_url_receive = request.form['blog_give']
-        interest_receive = request.form['interest_give']
-        aboutme_receive = request.form['aboutme_give']
-        javascript_receive = request.form['javascript_give']
-        HTML_receive = request.form['HTML_give']
-        CSS_receive = request.form['CSS_give']
-        Python_receive = request.form['Python_give']
-        Promise_receive = request.form['Promise_give']
-        
         doc = {
-            'mbti':mbti_receive,
-            'email':email_receive,
-            'photo_url':photo_url_receive,
-            'blog_url':blog_url_receive,
-            'interest':interest_receive,
-            'aboutme':aboutme_receive,
-            'javascript':javascript_receive,
-            'HTML':HTML_receive,
-            'CSS':CSS_receive,
-            'Python':Python_receive,
-            'Promise':Promise_receive
+            'mbti': form['mbti'],
+            'email':form['email'],
+            'photo_url':form['photo_url'],
+            'interest':form['interest'],
+            'aboutme':form['aboutme'],
+            'javascript':form['Javascript'],
+            'HTML':form['HTML'],
+            'CSS':form['CSS'],
+            'Python':form['Python'],
+            'Promise':form['Promise']
         }
-        db.user_info.update_one({"usernum":usernum},doc)
+        db.user_info.update_one({"usernum": int(usernum)}, {"$set": doc})
         print(doc)
-        return redirect(url_for('profile',usernum))
+        return redirect(url_for('profile', usernum=int(usernum)))
         
 # 수정버튼 누르면 404에러 발생
 
@@ -107,32 +90,32 @@ def write_post():
         user_name_receive = '이윤성'
     
 
-    mbti_receive = request.form['mbti_give']
-    email_receive = request.form['email_give']
-    photo_url_receive = request.form['photo_url_give']
-    blog_url_receive = request.form['blog_url_give']
-    interest_receive = request.form['interest_give']
-    aboutme_receive = request.form['aboutme_give']
-    javascript_receive = request.form['javascript_give']
-    HTML_receive = request.form['HTML_give']
-    CSS_receive = request.form['CSS_give']
-    Python_receive = request.form['Python_give']
-    Promise_receive = request.form['Promise_give']
+    mbti = request.form['mbti_give']
+    email = request.form['email_give']
+    photo_url = request.form['photo_url_give']
+    blog_url = request.form['blog_url_give']
+    interest = request.form['interest_give']
+    aboutme = request.form['aboutme_give']
+    javascript = request.form['javascript_give']
+    HTML = request.form['HTML_give']
+    CSS = request.form['CSS_give']
+    Python = request.form['Python_give']
+    Promise = request.form['Promise_give']
     
     doc = {
-        'usernum':user_num_receive,
-        'user_name':user_name_receive,
-        'mbti':mbti_receive,
-        'email':email_receive,
-        'photo_url':photo_url_receive,
-        'blog_url':blog_url_receive,
-        'interest':interest_receive,
-        'aboutme':aboutme_receive,
-        'javascript':javascript_receive,
-        'HTML':HTML_receive,
-        'CSS':CSS_receive,
-        'Python':Python_receive,
-        'Promise':Promise_receive
+        'usernum':user_num,
+        'user_name':user_name,
+        'mbti':mbti,
+        'email':email,
+        'photo_url':photo_url,
+        'blog_url':blog_url,
+        'interest':interest,
+        'aboutme':aboutme,
+        'javascript':javascript,
+        'HTML':HTML,
+        'CSS':CSS,
+        'Python':Python,
+        'Promise':Promise
     }
 
 if __name__ == '__main__':

@@ -85,44 +85,44 @@
 {{user}}
 
 <body>
-    <form class="tle" method="UPDATE" action="/">
+    <form class="tle" method="POST" action="/profile/{{user.usernum}}/input">
         <div class="input-group mb-3">
             <label class="input-group-text" id="inputGroup-sizing-default" for="inputGroupSelect01">이름</label>
-            <input class="input-group-text"  value={{user.user_name}} disabled>
+            <input class="input-group-text" name="name"  value={{user.user_name}} readonly>
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">MBTI</span>
-            <input id="mbti" type="text" class="form-control" aria-label="Sizing example input"
+            <input id="mbti" type="text" class="form-control" name="mbti" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" value="{{user.mbti}}">
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
-            <input id="email" type="text" class="form-control" aria-label="Sizing example input"
+            <input id="email" type="text" class="form-control" name="email" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" value="{{user.email}}">
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">프로필이미지 url</span>
-            <input id="photo_url" type="text" class="form-control" aria-label="Sizing example input"
+            <input id="photo_url" type="text" class="form-control" value="{{user.photo_url}}"  name="photo_url" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default">
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">블로그 url</span>
-            <input id="blog" type="text" class="form-control" aria-label="Sizing example input"
+            <input id="blog" type="text" class="form-control" value="{{user.url}}" name="url" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default">
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">관심사</span>
-            <input id="interest" type="text" class="form-control" aria-label="Sizing example input"
+            <input id="interest" type="text" class="form-control" value="{{user.interest}}" name="interest" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default">
         </div>
         <div class="input-group mb-3 aboutme">
             <span class="input-group-text" id="inputGroup-sizing-default">about me</span>
-            <input id="aboutme" type="text" class="form-control" aria-label="Sizing example input"
+            <input id="aboutme" type="text" class="form-control" name="aboutme" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" value="{{user.aboutme}}">
         </div>
         <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">JavaScript</label>
-            <select class="form-select" id="javascript">
+            <select class="form-select" name="Javascript" id="javascript">
                 <option selected>--</option>
                 <option value="10">10%</option>
                 <option value="20">20%</option>
@@ -138,7 +138,7 @@
         </div>
         <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">HTML</label>
-            <select class="form-select" id="HTML">
+            <select class="form-select" name="HTML" id="HTML">
                 <option selected>--</option>
                 <option value="10">10%</option>
                 <option value="20">20%</option>
@@ -154,7 +154,7 @@
         </div>
         <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">CSS</label>
-            <select class="form-select" id="CSS">
+            <select class="form-select" name="CSS" id="CSS">
                 <option selected>--</option>
                 <option value="10">10%</option>
                 <option value="20">20%</option>
@@ -170,7 +170,7 @@
         </div>
         <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">Python</label>
-            <select class="form-select" id="Python">
+            <select class="form-select" name="Python" id="Python">
                 <option selected>--</option>
                 <option value="10">10%</option>
                 <option value="20">20%</option>
@@ -186,7 +186,7 @@
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">앞으로의 다짐</span>
-            <input id="Promise" type="text" class="form-control" aria-label="Sizing example input"
+            <input id="Promise" type="text" name="Promise" class="form-control" aria-label="Sizing example input" value="{{user.Promise}}"
                 aria-describedby="inputGroup-sizing-default">
         </div>
         <div>
