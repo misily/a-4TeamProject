@@ -102,9 +102,9 @@ def write_post():
     elif (user_num_receive == 3):
         user_name_receive = '배현아'
     elif (user_num_receive == 4):
-        user_name_receive = '이윤성'
-    elif (user_num_receive == 5):
         user_name_receive = '유혜민'
+    elif (user_num_receive == 5):
+        user_name_receive = '이윤성'
     
 
     mbti_receive = request.form['mbti_give']
