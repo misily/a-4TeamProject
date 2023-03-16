@@ -44,6 +44,7 @@
             let mbti = $('#mbti').val()
             let email = $('#email').val()
             let photo_url = $('#photo_url').val()
+            let blog_url = $('#blog').val()
             let interest = $('#interest').val()
             let aboutme = $('#aboutme').val()
             let javascript = $('#javascript').val()
@@ -60,6 +61,7 @@
             formData.append("mbti_give", mbti);
             formData.append("email_give", email);
             formData.append("photo_url_give", photo_url);
+            formData.append("blog_url_give", blog_url);
             formData.append("interest_give", interest);
             formData.append("aboutme_give", aboutme);
             formData.append("javascript_give", javascript);
@@ -101,6 +103,11 @@
         <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">프로필이미지 url</span>
             <input id="photo_url" type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">블로그 url</span>
+            <input id="blog" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default">
         </div>
         <div class="input-group mb-3">

@@ -105,6 +105,7 @@ def write_post():
     mbti_receive = request.form['mbti_give']
     email_receive = request.form['email_give']
     photo_url_receive = request.form['photo_url_give']
+    blog_url_receive = request.form['blog_url_give']
     interest_receive = request.form['interest_give']
     aboutme_receive = request.form['aboutme_give']
     javascript_receive = request.form['javascript_give']
@@ -119,6 +120,7 @@ def write_post():
         'mbti':mbti_receive,
         'email':email_receive,
         'photo_url':photo_url_receive,
+        'blog_url':blog_url_receive,
         'interest':interest_receive,
         'aboutme':aboutme_receive,
         'javascript':javascript_receive,
