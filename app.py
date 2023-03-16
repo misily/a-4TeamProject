@@ -24,7 +24,9 @@ def input():
 
 @app.route('/details/<usernum>',methods=["GET"])
 def detail(usernum):
-    pass
+    user = db.user_info.find_one({"usernum":usernum},{'_id':False})
+    print(user)
+    return render_template('myprofile.html',user=user)
 
 @app.route('/comment', methods=["POST"])
 def comment():
