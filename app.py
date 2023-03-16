@@ -15,7 +15,7 @@ def home():
 # 프로필 상세페이지 연결
 @app.route('/profile/<usernum>',methods=["GET"])
 def profile(usernum):
-    user = db.user_info.find_one({'CSS':60},{'_id':False})
+    user = db.user_info.find_one({'usernum':int(usernum)},{'_id':False})
     print(user)
     modify = url_for('input',usernum=usernum)
     return render_template('user_profile.html',user=user,modify=modify)
@@ -34,6 +34,7 @@ def input(usernum):
         mbti_receive = request.form['mbti_give']
         email_receive = request.form['email_give']
         photo_url_receive = request.form['photo_url_give']
+        blog_url_receive = request.form['blog_give']
         interest_receive = request.form['interest_give']
         aboutme_receive = request.form['aboutme_give']
         javascript_receive = request.form['javascript_give']
@@ -46,6 +47,7 @@ def input(usernum):
             'mbti':mbti_receive,
             'email':email_receive,
             'photo_url':photo_url_receive,
+            'blog_url':blog_url_receive,
             'interest':interest_receive,
             'aboutme':aboutme_receive,
             'javascript':javascript_receive,
