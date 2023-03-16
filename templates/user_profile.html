@@ -1,5 +1,6 @@
 {% extends 'profile_detail.html'%}
 {% block contents%}
+
 <section class="bg-light shadow p-3 mb-5 bg-body rounded detail_main">
     <div class="side_and_main">
         <div class="container">
@@ -17,24 +18,23 @@
                             </li>
                             <li class="mb-2 mb-xl-3 display-28"><span
                                     class="display-26 text-secondary me-2 font-weight-600">MBTI:</span>
-                                {{user.mbti}}
+                                    {{user.mbti}}
                                 </li>
                             <li class="mb-2 mb-xl-3 display-28"><span
                                     class="display-26 text-secondary me-2 font-weight-600">Email:</span>
-                                {{user.email}}</li>
+                                    {{user.email}}</li>
                             <li class="mb-2 mb-xl-3 display-28"><span
-                                    class="display-26 text-secondary me-2 font-weight-600">개인프로젝트
-                                    링크:</span>
-                                http://myweb.eba-zhpec4pz..elasticbeanstalk.com/</li>
+                                    class="display-26 text-secondary me-2 font-weight-600">블로그:</span>
+                                    {{user.blog_url}}</li>
                             <li class="display-28"><span
                                     class="display-26 text-secondary me-2 font-weight-600">관심사:</span>
-                                관심사
+                                    {{user.interest}}
                             </li>
                         </ul>
                     </blockquote>
                     <div>
                         <span class="section-title text-primary mb-3 mb-sm-4">About Me</span>
-                        <p>나는 누구인가, 자기소개.</p>
+                        <p>{{user.aboutme}}</p>
                     </div>
                 </div>
                 <div class="col-lg-12">
@@ -45,7 +45,7 @@
                                 <div class="progress-text">
                                     <div class="row">
                                         <div class="col-6">JavaScript</div>
-                                        <div class="col-6 text-end">80%</div>
+                                        <div class="col-6 text-end">{{user.javascript}}</div>
                                     </div>
                                 </div>
                                 <div class="custom-progress progress progress-medium mb-3" style="height: 4px;">
@@ -56,7 +56,7 @@
                                 <div class="progress-text">
                                     <div class="row">
                                         <div class="col-6">HTML</div>
-                                        <div class="col-6 text-end">90%</div>
+                                        <div class="col-6 text-end">{{user.HTML}}</div>
                                     </div>
                                 </div>
                                 <div class="custom-progress progress progress-medium mb-3" style="height: 4px;">
@@ -67,7 +67,7 @@
                                 <div class="progress-text">
                                     <div class="row">
                                         <div class="col-6">css</div>
-                                        <div class="col-6 text-end">50%</div>
+                                        <div class="col-6 text-end">{{user.CSS}}</div>
                                     </div>
                                 </div>
                                 <div class="custom-progress progress progress-medium mb-3" style="height: 4px;">
@@ -78,7 +78,7 @@
                                 <div class="progress-text">
                                     <div class="row">
                                         <div class="col-6">Python</div>
-                                        <div class="col-6 text-end">60%</div>
+                                        <div class="col-6 text-end">{{user.Python}}</div>
                                     </div>
                                 </div>
                                 <div class="custom-progress progress progress-medium" style="height: 4px;">
@@ -89,7 +89,7 @@
                             </div>
                             <div>
                                 <span class="section-title text-primary mb-3 mb-sm-4">앞으로의 다짐</span>
-                                <p>앞으로 열심히 하겠다 열정을 가지고 이 한몸 바쳐서 공동체의 발전에 기여할 수 있도록....대충 이런 내용의 다짐 </p>
+                                <p>{{user.Promise}}</p>
                             </div>
 
                             <div class="btn_box">
