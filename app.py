@@ -31,6 +31,7 @@ def input(usernum):
             'mbti': form['mbti'],
             'email':form['email'],
             'photo_url':form['photo_url'],
+            'blog_url':form['blog_url'],
             'interest':form['interest'],
             'aboutme':form['aboutme'],
             'javascript':form['Javascript'],
