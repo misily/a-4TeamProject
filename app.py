@@ -23,11 +23,14 @@ def profile(usernum):
 @app.route('/profile/<usernum>/input',methods=["GET","POST"])
 def input(usernum):
     if request.method == "GET":
-        user = db.user_info.find_one({'CSS':60},{'_id':False})
+        print(usernum)
+        user = db.user_info.find_one({'usernum':int(usernum)},{'_id':False})
+        user_all = list(db.user_info.find({},{'_id':False}))
+        print(user,user_all)
         return render_template('profile_detail_input.html',user=user) 
     elif request.method == "POST":
         form = request.form
-        
+        print(form)
         mbti_receive = request.form['mbti_give']
         email_receive = request.form['email_give']
         photo_url_receive = request.form['photo_url_give']
