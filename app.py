@@ -1,7 +1,7 @@
 from flask import Flask,render_template,request,jsonify,redirect,url_for
 from pymongo import MongoClient
 
-app = Flask(__name__,static_folder="templates/assets")
+app = Flask(__name__,static_folder="templates/assets", static_url_path='')
 
 client = MongoClient('mongodb+srv://kimes:1234abcd@cluster0.d5w5umq.mongodb.net/?retryWrites=true&w=majority')
 db = client.dbsparta
@@ -13,20 +13,55 @@ def home():
     return render_template('index.html',comments=comments)
 
 # 프로필 상세페이지 연결
-@app.route('/profile')
-def profile():
-   return render_template('profile_detail.html') 
+@app.route('/profile/<usernum>',methods=["GET"])
+def profile(usernum):
+    user = db.user_info.find_one({'usernum':usernum},{'_id':False})
+    print(user)
+    modify = url_for('input',usernum=usernum)
+    return render_template('user_profile.html',user=user,modify=modify)
 
-@app.route('/profile/input')
-def input():
-   return render_template('profile_detail_input.html') 
+@app.route('/profile/<usernum>/input',methods=["GET","POST"])
+def input(usernum):
+    if request.method == "GET":
+        user = db.user_info.find_one({'usernum':usernum},{'_id':False})
+        return render_template('profile_detail_input.html',user=user) 
+    elif request.method == "POST":
+        form = request.form
+        
+        mbti_receive = request.form['mbti_give']
+        email_receive = request.form['email_give']
+        photo_url_receive = request.form['photo_url_give']
+        interest_receive = request.form['interest_give']
+        aboutme_receive = request.form['aboutme_give']
+        javascript_receive = request.form['javascript_give']
+        HTML_receive = request.form['HTML_give']
+        CSS_receive = request.form['CSS_give']
+        Python_receive = request.form['Python_give']
+        Promise_receive = request.form['Promise_give']
+        
+        doc = {
+            'mbti':mbti_receive,
+            'email':email_receive,
+            'photo_url':photo_url_receive,
+            'interest':interest_receive,
+            'aboutme':aboutme_receive,
+            'javascript':javascript_receive,
+            'HTML':HTML_receive,
+            'CSS':CSS_receive,
+            'Python':Python_receive,
+            'Promise':Promise_receive
+        }
+        db.user_info.update_one({"usernum":usernum},doc)
+        print(doc)
+        return redirect(url_for('profile',usernum))
+        
 # 수정버튼 누르면 404에러 발생
 
 @app.route('/details/<usernum>',methods=["GET"])
 def detail(usernum):
-    user = db.user_info.find_one({"usernum":usernum},{'_id':False})
+    user = db.user_info.find_one({'usernum':usernum},{'_id':False})
     print(user)
-    return render_template('myprofile.html',user=user)
+    return render_template('user_profile.html',user=user)
 
 @app.route('/comment', methods=["POST"])
 def comment():

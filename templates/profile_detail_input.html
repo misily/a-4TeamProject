@@ -79,28 +79,24 @@
     </script>
 </head>
 
+
+{{user}}
+
 <body>
-    <div class="tle">
+    <form class="tle" method="UPDATE" action="/">
         <div class="input-group mb-3">
-            <label class="input-group-text" for="inputGroupSelect01">이름</label>
-            <select class="form-select" id="javascript">
-                <option selected>⭐⭐⭐이름을 선택하세요⭐⭐⭐</option>
-                <option value="1">김은수</option>
-                <option value="2">김성광</option>
-                <option value="3">배현아</option>
-                <option value="4">이윤성</option>
-                <option value="5">유혜민</option>
-            </select>
+            <label class="input-group-text" id="inputGroup-sizing-default" for="inputGroupSelect01">이름</label>
+            <input class="input-group-text"  value={{user.user_name}} disabled>
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">MBTI</span>
             <input id="mbti" type="text" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default">
+                aria-describedby="inputGroup-sizing-default" value="{{user.mbti}}">
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
             <input id="email" type="text" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default">
+                aria-describedby="inputGroup-sizing-default" value="{{user.email}}">
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">프로필이미지 url</span>
@@ -115,7 +111,7 @@
         <div class="input-group mb-3 aboutme">
             <span class="input-group-text" id="inputGroup-sizing-default">about me</span>
             <input id="aboutme" type="text" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default">
+                aria-describedby="inputGroup-sizing-default" value="{{user.aboutme}}">
         </div>
         <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">JavaScript</label>
@@ -187,10 +183,10 @@
                 aria-describedby="inputGroup-sizing-default">
         </div>
         <div>
-            <button onclick=save_info() type="button" class="btn-dark">저장</button>
+            <input type="submit" class="btn-dark">
             <button onclick=moveback() type="button" class="btn-dark">취소</button>
         </div>
-    </div>
+    </form>
 </body>
 
 </html>
