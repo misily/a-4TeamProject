@@ -227,3 +227,102 @@ function clip(){
 
         alert("URL이 복사되었습니다.")  // 알림창
     }
+
+// 현아님 날씨 스크립트
+
+/*날씨 & 시계 추가*/
+
+
+//날씨
+const API_KEY = "e61a0ef2f9da6983247df11e32a809f7"; //add your API KEY
+const COORDS = 'coords'; //좌표를 받을 변수
+
+//DOM객체들
+const weatherInfo = document.querySelector('.weatherInfo');
+const weatherIconImg = document.querySelector('.weatherIcon');
+
+//초기화
+function init() {
+    askForCoords();
+}
+
+//좌표를 물어보는 함수
+function askForCoords() {
+    navigator.geolocation.getCurrentPosition(handleSuccess, handleError);
+}
+
+//좌표를 얻는데 성공했을 때 쓰이는 함수
+function handleSuccess(position) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    const coordsObj = {
+        latitude,
+        longitude
+    };
+    getWeather(latitude, longitude); //얻은 좌표값을 바탕으로 날씨정보를 불러온다.
+}
+
+//좌표를 얻는데 실패했을 때 쓰이는 함수
+function handleError() {
+    console.log("can't not access to location");
+}
+
+//날씨 api를 통해 날씨에 관련된 정보들을 받아온다.
+function getWeather(lat, lon) {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&lang=kr`).then(function (response) {
+        return response.json();
+    })
+        .then(function (json) {
+            //온도, 위치, 날씨묘사, 날씨아이콘을 받는다.
+            const temperature = json.main.temp;
+            const place = json.name;
+            const weatherDescription = json.weather[0].description;
+            const weatherIcon = json.weather[0].icon;
+            const weatherIconAdrs = `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
+
+            //받아온 정보들을 표현한다.
+            weatherInfo.innerText = `${temperature} °C / ${weatherDescription}`;
+            weatherIconImg.setAttribute('src', weatherIconAdrs);
+        })
+        .catch((error) => console.log("error:", error));
+}
+
+init();
+
+//시계
+function Clock() {
+    var date = new Date();
+    var YYYY = String(date.getFullYear());
+    var MM = String(date.getMonth() + 1);
+    var DD = Zero(date.getDate());
+    var hh = Zero(date.getHours());
+    var mm = Zero(date.getMinutes());
+    var ss = Zero(date.getSeconds());
+    var Week = Weekday();
+
+    Write(YYYY, MM, DD, hh, mm, ss, Week);
+
+    //시계에 1의자리수가 나올때 0을 넣어주는 함수 (ex : 1초 -> 01초)
+
+    function Zero(num) {
+        return (num < 10 ? '0' + num : '' + num);
+    }
+
+    //요일을 추가해주는 함수
+    function Weekday() {
+        var Week = ['일', '월', '화', '수', '목', '금', '토'];
+        var Weekday = date.getDay();
+        return Week[Weekday];
+    }
+
+
+    //시계부분을 써주는 함수
+    function Write(YYYY, MM, DD, hh, mm, ss, Week) {
+        var Clockday = document.getElementById("Clockday");
+        var Clock = document.getElementById("Clock");
+        Clockday.innerText = YYYY + '/' + MM + '/' + DD + '(' + Week + ')';
+        Clock.innerText = hh + ':' + mm + ':' + ss;
+    }
+}
+
+setInterval(Clock, 1000); //1초(1000)마다 Clock함수를 재실행 한다
