@@ -3,7 +3,7 @@ from pymongo import MongoClient
 
 app = Flask(__name__,static_folder="templates", static_url_path='')
 
-client = MongoClient('mongodb+srv://kimes:1234abcd@cluster0.d5w5umq.mongodb.net/?retryWrites=true&w=majority')
+client = MongoClient('')
 db = client.dbsparta
 userComment = db.comment
 
@@ -19,6 +19,7 @@ def profile(usernum):
     print(user)
     modify = url_for('input',usernum=usernum)
     return render_template('user_profile.html',user=user,modify=modify)
+
 
 @app.route('/profile/<usernum>/input',methods=["GET","POST"])
 def input(usernum):
